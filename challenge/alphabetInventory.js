@@ -11,5 +11,21 @@
 
 // Code:
 function alphaCount (alphabet, text) {
-
+  alphabet = alphabet.toLowerCase();
+  text = text.toLowerCase();
+  var result = alphabet.split("").map(elem => [elem,0] );
+  var letters = alphabet.split("");
+  
+  text.split('').forEach(letter => {
+    if(letters.indexOf(letter) >= 0) {
+      result[letters.indexOf(letter)][1]++;
+    }
+  });
+  result = result.filter(elem => {
+    return elem[1] > 0;
+  })
+  
+  if(result.length === 0)
+    return "no matches";
+  return result.map(elem => elem.join(':')).join(',');
 }
