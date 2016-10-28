@@ -12,5 +12,21 @@
 
 // Code:
 function allAnagrams (string) {
-
+  var result = [];
+  var str = string.split('');
+  
+  function recurse(built, arr){
+    if (built.length === str.length){
+      if(result.indexOf(built) === -1)
+        result.push(built);
+    } else {
+      for(var i = 0; i < arr.length; i++){
+       var temp = arr.slice();
+       temp.splice(i,1)
+       recurse(built+arr[i], temp);
+      }
+    }
+  }
+  recurse('', str);
+  return result;
 }
