@@ -10,6 +10,4 @@
 // zipSum([ 10, 20 ], [ 1, 2, 3 ] ) => [ 11, 22 ]
 
 // Code:
-var zipSum = function(xs, ys) {
-
-}
+const zipSum = (xs,ys) => { return xs.slice(0, ys.length).map((elem, i) => elem += ys[i]); }
