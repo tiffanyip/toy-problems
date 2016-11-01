@@ -8,6 +8,12 @@
 // max([ 5 ]  ) => 5
 
 // Code:
-function max (numbers){
-
+function max (numbers) {
+  var maximumNumber = numbers[0];
+  for(var i = 1; i < numbers.length; i++){
+    if(numbers[i] > maximumNumber){
+      maximumNumber = numbers[i];
+    }
+  }
+  return maximumNumber;
 }
