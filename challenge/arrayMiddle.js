@@ -10,6 +10,6 @@
 // middle([ 10, 20, 30, 40 ] ) => 25
 
 // Code:
-function middle (numbers) {
-
+const middle = (n) => {
+  return (n.length % 2 === 0) ? 0.5 * (n[n.length / 2] + n[n.length / 2 - 1]) : n[Math.floor(n.length / 2)];
 }
