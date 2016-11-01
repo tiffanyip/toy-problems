@@ -15,24 +15,39 @@
 // Code:
 
 var Stack = function(initialValue) {
-  this.storage = {};
+  this.storage = {}; //top of stack is the end
   this.count = 0;
-  
-  // your code here
+  if(initialValue){
+    this.storage[this.count] = initialValue;
+    this.count++;
+  }
 };
 
 Stack.prototype.size = function() {
-  // your code here
+  return this.count;
 };
 
 Stack.prototype.peek = function() {
-  // your code here
+  return (this.count) ? this.storage[this.count-1] : null;
 };
 
-Stack.prototype.push = function(val) {
-  // your code here
+Stack.prototype.push = function() {
+  let args =[...arguments];
+  args.forEach( (elem) => {
+    this.storage[this.count] = elem;
+    this.count++;
+  });
+  return (this.count) ? this.storage[this.count-1] : null;
 };
 
 Stack.prototype.pop = function() {
-  // your code here
+  if(this.count <= 0)
+    return null;
+  if(this.count > 0){
+    tmp = this.storage[this.count-1];
+    delete this.storage[this.count-1];
+    this.count--;
+    return tmp;
+  }
+  
 };
