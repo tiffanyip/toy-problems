@@ -12,5 +12,17 @@
 
 // Code:
 function arrayception (array) {
+  var maxDepth = 0;
 
+  function recurse(arr, depth){
+    arr.forEach(elem => {
+      if (Array.isArray(elem) && elem.length > 0){
+        recurse(elem, depth+1);
+      } else if(!Array.isArray(elem)) {
+        maxDepth = Math.max(depth+1, maxDepth);
+      }
+    });
+  }
+  recurse(array, 0);
+  return maxDepth;
 }
