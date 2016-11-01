@@ -9,6 +9,14 @@
 // isSubset([ 2, 3, 3, "a" ], [ 3, 3, 3, "a" ]) => false
 
 // Code:
-function isSubset (array, sub){
-
+function isSubset (array, sub) {
+  var i = 0;
+  while(i < sub.length) {
+    if(array.indexOf(sub[i]) < 0){
+      return false;
+    } 
+    array.splice(array.indexOf(sub[i]), 1);
+    i++;
+  }
+  return true;
 }
