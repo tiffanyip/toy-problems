@@ -13,7 +13,33 @@
 // telephoneWords("1123") => [ "11AD", "11AE", "11AF", "11BD", "11BE", "11BF", "11CD", "11CE", "11CF" ] 
 
 // Code:
-
-function telephoneWords(digitString) {
-
+function telephoneWords (digitString) {
+  var arr = digitString.split();
+  var result = [];
+  var obj = {
+    0: ['0'],
+    1: ['1'],
+    2: ['A', 'B', 'C'],
+    3: ['D', 'E', 'F'],
+    4: ['G', 'H', 'I'],
+    5: ['J', 'K', 'L'],
+    6: ['M', 'N', 'O'],
+    7: ['P', 'Q', 'R', 'S'],
+    8: ['T', 'U', 'V'],
+    9: ['W', 'X', 'Y', 'Z']
+  }
+  
+  recurse = (string, ind) => {
+    if(string.length === digitString.length) {
+      result.push(string);
+    } else {
+      var choices = obj[digitString[ind]];
+      for(var i = 0 ; i < choices.length; i++) {
+        recurse(string + choices[i], ind + 1);
+      }
+    }
+  }
+  recurse("", 0);
+  return result;
+  
 }
