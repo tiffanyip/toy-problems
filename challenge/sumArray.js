@@ -10,6 +10,12 @@
 // sumArray([ 1, 2, 3, -6, 4, 5, 6 ]  ) => 15
 
 // Code:
-var sumArray = function(array) {
-
+function sumArray (array) {
+    var contiguous_sum = array[0];
+    var max = array[0];
+    for (var i = 1; i < array.length; i++){
+      contiguous_sum = Math.max(array[i], contiguous_sum + array[i]);
+      max = Math.max(max, contiguous_sum);
+    }
+    return max;
 }
